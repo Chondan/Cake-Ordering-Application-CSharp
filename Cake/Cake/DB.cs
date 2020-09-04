@@ -22,20 +22,13 @@ namespace Cake
         public double cakeprice;
         public Byte[] cakeimg;
         public string tel;
-        public string cakeusername;
-       
-
-     
-        
+        public string cakeusername;              
     }
     
     class DB
     {
-
-
         public static OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Cake.accdb");
         public static OleDbCommand cmd = new OleDbCommand();
-
         public static OleDbCommand cmdd = new OleDbCommand();
 
         public static string fname;
@@ -80,10 +73,7 @@ namespace Cake
             tel = dtuser.Rows[0][4].ToString();
             pass = dtuser.Rows[0][5].ToString();
 
-            closedb();
-            
-
-
+            closedb();            
         }
 
         public static void UpdateUserInfo(string username,string name,string surname,string Address,string telephone,string password)
@@ -94,13 +84,10 @@ namespace Cake
             cmd.ExecuteNonQuery();
 
             closedb();
-
-
         }
         
         public static void CakePrice(string cakeProperty,int x)
-        {
-            
+        {           
             opendb();
             if(cakeProperty != "")
             {
@@ -142,11 +129,7 @@ namespace Cake
             {
                 p1 = 0; p2 = 0; p3 = 0; p4 = 0;
                 price = p1 + p2 + p3 + p4;
-            }
-         
-
-            
-            
+            }                                
             closedb();
         }
         
@@ -161,7 +144,6 @@ namespace Cake
             
             dtdelivery.Load(dr);
             
-
             foreach (DataRow row in dtdelivery.Rows)
             {
                 cake tmp = new cake();
@@ -173,10 +155,7 @@ namespace Cake
                 tmp.cakeprice = (double)row["Price"];
                 tmp.cakeimg = (Byte[])row["CakeFace"];
                 cake.Add(tmp);
-            }
-               
-
-           
+            }                        
             closedb();
         }
 
@@ -211,9 +190,6 @@ namespace Cake
                 tmp.cakeimg = (Byte[])row["CakeFace"];
                 bag.Add(tmp);
             }
-
-
-
             closedb();
         }
 
@@ -252,7 +228,4 @@ namespace Cake
             closedb();
         }
     }
-
-  
-
 }
